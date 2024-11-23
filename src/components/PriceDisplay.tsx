@@ -7,24 +7,35 @@ export default function PriceDisplay() {
 
   if (isLoading) {
     return (
-      <div className="animate-pulse">
-        <div className="h-8 bg-purple-500/10 rounded w-32 mb-4"></div>
-        <div className="h-4 bg-purple-500/10 rounded w-24"></div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {[...Array(4)].map((_, i) => (
+          <div key={i} className="animate-pulse">
+            <div className="h-24 bg-purple-500/10 rounded-lg"></div>
+          </div>
+        ))}
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="text-red-400">
+      <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400">
         Failed to load prices. Please try again later.
+      </div>
+    );
+  }
+
+  if (!prices?.length) {
+    return (
+      <div className="p-4 bg-purple-500/10 border border-purple-900/20 rounded-lg text-purple-400">
+        No price data available at the moment.
       </div>
     );
   }
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      {prices?.map((token) => (
+      {prices.map((token) => (
         <div
           key={token.id}
           className="relative group"

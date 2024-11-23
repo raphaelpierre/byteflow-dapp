@@ -24,7 +24,7 @@ export default function Footer() {
           {/* Copyright */}
           <div className="text-center">
             <p className="text-gray-500 text-sm mb-2">
-              © 2024 BYTEFLOW · CRYPTO VALLEY PETIT-LANCY 
+              © 2024 BYTEFLOW · QUANTUM-SECURED BLOCKCHAIN PROTOCOL
             </p>
             <div className="flex justify-center space-x-6 text-xs text-gray-600">
               <a href="#" className="hover:text-purple-400 transition-colors">Privacy Policy</a>

@@ -27,8 +27,10 @@ export async function getTokenPrices(tokens: string[] = ['bitcoin', 'ethereum', 
     });
     return response.data;
   } catch (error) {
-    console.error('Error fetching token prices:', error);
-    throw error;
+    if (error instanceof Error) {
+      console.error('Error fetching token prices:', error.message);
+    }
+    return [];
   }
 }
 
@@ -49,7 +51,13 @@ export async function getTokenHistory(tokenId: string, days: number = 7): Promis
     );
     return response.data;
   } catch (error) {
-    console.error('Error fetching token history:', error);
-    throw error;
+    if (error instanceof Error) {
+      console.error('Error fetching token history:', error.message);
+    }
+    return {
+      prices: [],
+      market_caps: [],
+      total_volumes: [],
+    };
   }
 }

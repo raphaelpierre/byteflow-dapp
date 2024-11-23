@@ -7,11 +7,13 @@ export function useTokenPrices() {
     () => getTokenPrices(),
     {
       refreshInterval: 30000, // Refresh every 30 seconds
+      revalidateOnFocus: false,
+      shouldRetryOnError: false,
     }
   );
 
   return {
-    prices: data,
+    prices: data || [],
     isLoading,
     error,
     refresh: mutate,
@@ -24,11 +26,13 @@ export function useTokenHistory(tokenId: string, days: number = 7) {
     () => getTokenHistory(tokenId, days),
     {
       refreshInterval: 300000, // Refresh every 5 minutes
+      revalidateOnFocus: false,
+      shouldRetryOnError: false,
     }
   );
 
   return {
-    history: data,
+    history: data || { prices: [], market_caps: [], total_volumes: [] },
     isLoading,
     error,
   };
