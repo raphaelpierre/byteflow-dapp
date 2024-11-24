@@ -8,5 +8,5 @@ export default defineConfig({
     exclude: ['lucide-react'],
     
   },
-  base: '/byteflow-dapp/'
+  base: 'byteflow-dapp'
 });
